@@ -1,0 +1,86 @@
+[
+  {
+    "page": 1,
+    "file": "assets/press/image-p01-01.jpeg",
+    "width": 999,
+    "height": 610,
+    "colorspace": "DeviceRGB"
+  },
+  {
+    "page": 1,
+    "file": "assets/press/image-p01-02.jpeg",
+    "width": 1928,
+    "height": 1088,
+    "colorspace": "DeviceRGB"
+  },
+  {
+    "page": 2,
+    "file": "assets/press/image-p02-01.jpeg",
+    "width": 1920,
+    "height": 1080,
+    "colorspace": "DeviceRGB"
+  },
+  {
+    "page": 3,
+    "file": "assets/press/image-p03-01.jpeg",
+    "width": 1920,
+    "height": 1080,
+    "colorspace": "DeviceRGB"
+  },
+  {
+    "page": 4,
+    "file": "assets/press/image-p04-01.jpeg",
+    "width": 960,
+    "height": 540,
+    "colorspace": "DeviceRGB"
+  },
+  {
+    "page": 4,
+    "file": "assets/press/image-p04-02.jpeg",
+    "width": 1916,
+    "height": 1076,
+    "colorspace": "DeviceRGB"
+  },
+  {
+    "page": 5,
+    "file": "assets/press/image-p05-01.jpeg",
+    "width": 1920,
+    "height": 1080,
+    "colorspace": "DeviceRGB"
+  },
+  {
+    "page": 6,
+    "file": "assets/press/image-p06-01.jpeg",
+    "width": 1920,
+    "height": 1080,
+    "colorspace": "DeviceRGB"
+  },
+  {
+    "page": 7,
+    "file": "assets/press/image-p07-01.jpeg",
+    "width": 960,
+    "height": 540,
+    "colorspace": "DeviceRGB"
+  },
+  {
+    "page": 7,
+    "file": "assets/press/image-p07-02.jpeg",
+    "width": 1916,
+    "height": 1076,
+    "colorspace": "DeviceRGB"
+  },
+  {
+    "page": 8,
+    "file": "assets/press/image-p08-01.jpeg",
+    "width": 990,
+    "height": 594,
+    "colorspace": "DeviceRGB"
+  },
+  {
+    "page": 8,
+    "file": "assets/press/image-p08-02.jpeg",
+    "width": 1924,
+    "height": 1088,
+    "colorspace": "DeviceRGB"
+  }
+]

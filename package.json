@@ -1,0 +1,1 @@
+{"name":"ver-dikt-andy-dav-epk","version":"2.0.0","private":true,"scripts":{"start":"python -m http.server 5177","build":"node tools/build.js","check":"node tools/check.js"}}
