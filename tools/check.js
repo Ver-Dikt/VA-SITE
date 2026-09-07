@@ -14,4 +14,6 @@ assert(!/TODO|требует уточнения|должно быть|Email по
 const audio=html.match(/<audio\b[^>]*>/)[0];assert(audio.includes('preload="none"'));assert(!/\b(?:autoplay|src)=/.test(audio));
 for(const file of fs.readdirSync(path.join(root,'src')).filter(f=>f.endsWith('.js')))new vm.Script(fs.readFileSync(path.join(root,'src',file),'utf8'),{filename:file});
 assert(!fs.readFileSync(path.join(root,'src/music.js'),'utf8').includes('assets/audio/'));assert.equal(c.downloads.length,7);
-console.log(`PASS: ${refs.length} references; ${d.releases.length} Beatport records; ${d.tracks.length} remote previews; 7 downloads; JS syntax; no initial audio source or autoplay.`);
+assert.equal(c.videos.length,5);assert(html.includes('data-track-art'));assert(html.includes('proof-strip'));
+const app=fs.readFileSync(path.join(root,'src/app.js'),'utf8');assert(app.includes('vkvideo.ru/video_ext.php'));assert(app.includes('allowfullscreen'));
+console.log(`PASS: ${refs.length} references; ${d.releases.length} Beatport records; ${d.tracks.length} remote previews; 5 embedded VK videos; release artwork; 7 downloads; JS syntax; no initial audio source or autoplay.`);
