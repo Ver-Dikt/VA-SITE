@@ -5,7 +5,7 @@ const assert=require('node:assert/strict');
  const page=await browser.newPage();
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(process.env.SITE_URL||'http://127.0.0.1:5177/',{waitUntil:'domcontentloaded'});
- await page.waitForSelector('.polar-controls');
+ await page.waitForSelector('.north-home');
  for(const width of [360,390,600,768,1024,1440]){
    await page.setViewportSize({width,height:900});
    await page.waitForTimeout(150);
@@ -41,8 +41,7 @@ const assert=require('node:assert/strict');
  await page.locator('[data-track-search]').fill('Haunted');
  assert((await page.locator('[data-track]').count())>0);
  await page.locator('[data-track-search]').fill('');
- await page.locator('.polar-controls button').click();
- assert(await page.locator('body').evaluate(b=>b.classList.contains('effects-off')));
+ assert.equal(await page.locator('.polar-controls').count(),0);
  await page.locator('[data-photos] button').first().click();
  assert(await page.locator('dialog').evaluate(d=>d.open));await page.keyboard.press('Escape');
  assert(!(await page.locator('dialog').evaluate(d=>d.open)));

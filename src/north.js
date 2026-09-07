@@ -1,16 +1,6 @@
 (() => {
   'use strict';
   const $=s=>document.querySelector(s);
-  const controls=document.createElement('div');controls.className='polar-controls';
-  const toggle=document.createElement('button');toggle.type='button';toggle.textContent='Эффекты: вкл.';toggle.setAttribute('aria-pressed','true');
-  const booking=document.createElement('a');booking.href='#booking';booking.textContent='Booking ↗';
-  controls.append(toggle,booking);document.body.append(controls);
-  toggle.addEventListener('click',()=>{
-    const off=document.body.classList.toggle('effects-off');
-    toggle.setAttribute('aria-pressed',String(!off));toggle.textContent=off?'Эффекты: выкл.':'Эффекты: вкл.';
-    const scene=$('.motion-toggle');
-    if(scene&&!scene.hidden&&scene.getAttribute('aria-pressed')!==String(off))scene.click();
-  });
   if('IntersectionObserver' in window){
     const links=[...document.querySelectorAll('#nav a')];
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
