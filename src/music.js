@@ -39,6 +39,7 @@ function select(index){
   $('[data-apple-link]').href=track.url;
   $('[data-itunes-link]').href=`${track.url}${track.url.includes('?')?'&':'?'}app=itunes`;
   progress.value=0; $('[data-time]').textContent='0:00 / 0:00'; status.textContent=''; state();
+  document.dispatchEvent(new Event('va:trackchange'));
 }
 async function start(){
   const token=++request;

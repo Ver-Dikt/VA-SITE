@@ -49,3 +49,38 @@ body.effects-off .ice-shard{animation:none}
 @keyframes menu-in{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 @media(max-width:600px){.music-console{display:flex}.now-art img{max-width:290px}.now-art{aspect-ratio:auto}.music-console .player{padding:24px}.music-console .listening-body{border-top:1px solid #a0c6d33b}.video-grid{grid-template-columns:1fr;gap:20px}.video h3{font-size:21px}.video p{font-size:12px}.video>a{font-size:11px}.section{padding-block:76px}.music-services{grid-template-columns:1fr 1fr}.music-services a{font-size:10px}.music-head h2{font-size:clamp(39px,10vw,58px)}.proof-strip strong{font-size:32px}.proof-strip span{font-size:9px}.community-grid{gap:14px}.polar-controls>a{display:none}.ice-shard{width:70px;height:140px}.hero-title{padding-top:230px}.booking{padding-bottom:100px}}
 @media(prefers-reduced-motion:reduce){.ice-shard,.header nav.open{animation:none}.button:hover,.proof-strip>a:hover{transform:none}.polar-controls button{display:none}}
+
+/* Quiet surfaces leave the landscape and the single sculpture room to breathe. */
+:root{--accent:#d7dfdf;--line:#ffffff16}
+.header{background:#090f14ed;border-color:#ffffff12;box-shadow:none}
+.header nav a[aria-current="location"]:after{display:none}
+.header nav a[aria-current="location"]{color:#fff}
+.header nav .nav-book,.round.play{background:#e5e8e5;color:#101719;box-shadow:none}
+.identity-strip{background:#0a1117;border:0}
+.signal{border:0;background-image:radial-gradient(ellipse at 65% 40%,#62778521,transparent 65%),linear-gradient(120deg,#080e15e8,#080e158f),url("../assets/images/polar-landscape.webp")}
+.signal-sticky{grid-template-columns:.68fr 1.32fr;min-height:780px;max-width:1800px;margin:auto;gap:20px}
+.signal h2{font-size:clamp(52px,6vw,94px)}.sculpture{height:640px}
+.scene-caption{letter-spacing:.14em;color:#aab5bc}.signal-copy>p:last-child{display:none}
+.motion-toggle{border:0;color:#b4bec4}
+.button{border-color:#ffffff30;background:#ffffff06;box-shadow:none}.button:hover{background:#e5e8e5;box-shadow:0 12px 28px #0003;color:#0a1117}
+.music-console{background:#0c141cee;border:1px solid #ffffff1f;box-shadow:0 35px 90px #0006}
+.music-console .listening-body{border-color:#ffffff16}.music-console .track{border-color:#ffffff10}.music-console .track.active{background:#ffffff07;color:#f4f5f1}
+.music-console .track-search input{border-color:#ffffff26;background:#ffffff03;border-radius:6px}
+.now-art>span{display:none}
+.platform-pair{padding:18px 20px;background:#101923c9;border:1px solid #ffffff14;border-radius:8px}
+.platform-pair h3{font-size:15px;letter-spacing:0;margin-bottom:8px;color:#ecf0ed}
+.platform-pair>div{display:flex;gap:16px;flex-wrap:wrap}
+.music-services .platform-pair a{display:inline-flex;min-height:40px;padding:8px 0;border:0!important;border-radius:0;background:none;font-size:11px;box-shadow:none;color:#aebdc7}
+.music-services .platform-pair a:hover{color:white;background:none;text-decoration:underline;text-underline-offset:5px}
+.proof-strip>.metric-card{min-width:0;padding:30px;background:linear-gradient(145deg,#18212bef,#0c141bee);border:1px solid #ffffff18;border-radius:9px;box-shadow:0 18px 45px #0002}
+.metric-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}.metric-links a{font-size:11px;color:#bfc8ce;padding:8px 0;min-height:36px}
+.metric-links a:hover{color:#fff;text-decoration:underline;text-underline-offset:5px}
+.proof-strip strong{color:#e9eeec}.proof-strip span{color:#aab7c1}
+.service-player{border-color:#ffffff1c;background:#0d151ee8}.stream-help{font-size:12px;line-height:1.8;color:#aab7c1;max-width:780px;margin:0 0 20px}
+.store-links a,.video,.downloads a,.community-grid a,.portrait{border-color:#ffffff1c;box-shadow:none}
+.video{background:#0c141bea}.store-links a{background:#ffffff04}
+.text-links a,.video>a{border:0}.video>a:hover,.text-links a:hover{text-decoration:underline;text-underline-offset:5px}
+.polar-controls button,.polar-controls>a{border-color:#ffffff24;background:#0c141bed}
+.about,.press{background-image:linear-gradient(110deg,#080e15ed,#080e15b8),url("../assets/images/polar-landscape.webp")}
+@media(max-width:900px){.signal-sticky{grid-template-columns:.8fr 1.2fr;min-height:620px}.sculpture{height:480px}.proof-strip>.metric-card{padding:24px 20px}}
+@media(max-width:600px){.signal-sticky{display:flex;min-height:0;padding-block:60px 80px}.sculpture{height:350px}.platform-pair{padding:16px 13px}.platform-pair>div{gap:0 12px}.music-services .platform-pair a{font-size:10px}.proof-strip>.metric-card{padding:22px 16px}.metric-links{gap:4px 12px;margin-top:12px}.metric-links a{font-size:10px}.service-player{padding-inline:18px}}
