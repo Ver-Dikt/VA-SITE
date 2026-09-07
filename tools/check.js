@@ -3,6 +3,12 @@ const root=path.resolve(__dirname,'..'),html=fs.readFileSync(path.join(root,'ind
 for(const file of ['content.js','catalogue.js'])vm.runInNewContext(fs.readFileSync(path.join(root,'src',file),'utf8'),ctx);
 const c=ctx.window.VA_CONTENT,d=ctx.window.VA_CATALOGUE;
 const refs=[...html.matchAll(/(?:src|href)="([^"]+)"/g)].map(m=>m[1]);
+for(const cssFile of fs.readdirSync(path.join(root,'src')).filter(f=>f.endsWith('.css'))){
+ const css=fs.readFileSync(path.join(root,'src',cssFile),'utf8');
+ for(const match of css.matchAll(/url\(["']?([^"')]+)["']?\)/g)){
+  if(!/^(https?:|data:)/.test(match[1]))assert(fs.existsSync(path.resolve(root,'src',match[1])),`Missing CSS asset ${match[1]}`);
+ }
+}
 refs.push(...c.downloads.map(x=>x[2]),...c.videos.map(x=>`assets/images/${x[2]}.webp`),...c.photos.map(x=>`assets/images/${x[0]}.webp`));
 for(const ref of refs){if(ref.startsWith('#'))assert(html.includes(`id="${ref.slice(1)}"`),`Missing section ${ref}`);else if(!/^(https?:|mailto:)/.test(ref))assert(fs.existsSync(path.join(root,ref)),`Missing asset ${ref}`)}
 for(const [name,href] of [...c.platforms,...c.social]){assert(name&&href);assert.equal(new URL(href).protocol,'https:')}

@@ -1,0 +1,90 @@
+/* Each chapter has its own material, lighting and composition. */
+.music{
+ background:#0b1116;
+ background-image:linear-gradient(90deg,#0b1116f7 0,#0b1116e0 40%,#0b111622 100%),linear-gradient(0deg,#0b1116 0,transparent 55%),url("../assets/images/glacial-macro.webp");
+ background-size:100% 850px,100% 850px,auto 850px;
+ background-position:top,top,right top;
+ background-repeat:no-repeat;
+}
+.music:before,.music:after{display:none}
+.music-head{padding-block:20px 70px;align-items:center}
+.music-head h2{max-width:720px;line-height:1.04}
+.platform-pair{background:#091117bd;backdrop-filter:blur(10px)}
+.proof-strip{margin-top:0;gap:0;border-block:1px solid #ffffff1c}
+.proof-strip>.metric-card{padding:32px 28px;border:0;border-radius:0;box-shadow:none;background:#0b1116a8}
+.proof-strip>.metric-card:nth-child(3n+2){border-inline:1px solid #ffffff16}
+.proof-strip>.metric-card:nth-child(-n+3){border-bottom:1px solid #ffffff16}
+.music-console{margin-top:64px;background:linear-gradient(130deg,#192127,#0b1217 70%);border:1px solid #ffffff1a;box-shadow:0 30px 75px #0005}
+.signal{background:radial-gradient(ellipse at 72% 40%,#293139 0,#13171d 28%,#07090d 65%);overflow:hidden}
+.signal:before{content:"";position:absolute;pointer-events:none;inset:0;background:linear-gradient(114deg,transparent 25%,#f0f5ff04 37%,transparent 51%);z-index:0}
+.signal-sticky{min-height:800px;grid-template-columns:.7fr 1.3fr}
+.sculpture{isolation:isolate;height:660px}
+.sculpture:before{content:"";position:absolute;left:9%;right:9%;bottom:10%;height:11%;border-radius:50%;background:radial-gradient(ellipse,#a6bac51f,transparent 65%);filter:blur(14px);z-index:-1}
+.scene-caption{bottom:0;color:#68747d}
+.live-section{
+ background-color:#11181c;
+ background-image:linear-gradient(180deg,#0a1115b8 0,#11181c55 38%,#11181c 95%),url("../assets/images/snow-fells.webp");
+ background-position:top,center top;background-repeat:no-repeat;background-size:100% max(730px,56.25vw),100% auto;
+ padding-top:110px;
+}
+.live-section .section-heading{min-height:340px;align-items:flex-start;margin-bottom:60px;text-shadow:0 2px 22px #0008}
+.live-section .section-heading .eyebrow{color:#eff4f2}
+.live-section h2 em{color:#e1e8e8}.live-section .section-note{align-self:flex-start;color:#e4e9e9;margin-top:46px;font-size:15px}
+.video-grid{max-width:none;gap:26px}.video{background:#131c20;border:1px solid #ffffff14;padding:9px 9px 20px}
+.coord{padding-block:54px 0;margin-top:70px}
+.about{background:#1b1d20;background-image:radial-gradient(ellipse at 0 0,#36393b55,transparent 65%);padding-block:120px}
+.about .about-intro{color:#c8cbca;max-width:960px}
+.portrait{border-radius:2px;border:0}.artist h3{font-size:48px}
+.artists{gap:clamp(32px,8vw,140px)}
+.support{border-top-color:#ffffff1f}
+.gallery-section{background:#08090b;padding-block:110px}
+.gallery-section .section-heading{align-items:center}
+.gallery{gap:22px}.photo{border-radius:2px}
+.press{background:#edf0ed;color:#1c2428;border:0;position:relative;overflow:hidden;padding-block:120px}
+.press:before{content:"";position:absolute;pointer-events:none;width:80%;height:450px;right:-20%;top:-230px;border-radius:50%;background:#fff9;box-shadow:0 25px 100px #bcc8cb38;transform:rotate(-16deg)}
+.press>*{position:relative}
+.press .eyebrow{color:#516269}.press h2 em{color:#77858a}
+.press .bio>p{color:#48575e}
+.press .downloads a{background:#ffffff80;border:1px solid #1d34351f;color:#1b292e;border-radius:3px;box-shadow:none;padding:22px 24px}
+.press .downloads a:hover{background:white;transform:translateX(3px)}
+.press .downloads small{color:#5b6b71}.press .downloads .arrow{color:#334c56}
+.press .button{color:#243b45;border-color:#819295;background:transparent}
+.press .button:hover{background:#243b45;color:#fff}
+.press .status{color:#304e57}.press a:focus-visible,.press button:focus-visible{outline-color:#274b57}
+.community{background:#262e31;color:#edf0ee;border:0;padding-block:95px}
+.community .section-note{color:#b6c1c4}.community-grid{gap:34px}
+.community-grid a{background:transparent;box-shadow:none;border:0;border-top:1px solid #ffffff35;border-radius:0;padding:24px 0;margin:0}
+.community-grid a:hover{background:transparent;color:#fff}.community-grid p{color:#b4bfc1}
+.booking{
+ background-color:#05090e;
+ background-image:linear-gradient(180deg,#05090e24,#05090e00 35%,#05090ed4 100%),url("../assets/images/polar-horizon.webp");
+ background-size:cover;background-position:center;
+ padding-block:120px 70px;min-height:760px;
+}
+.booking h2{max-width:1150px;font-size:clamp(58px,8.5vw,128px)}
+.booking h2 em{color:#a0abb4}.booking h2>span{display:none}
+.booking-bottom{margin-top:90px}.booking-bottom .button{background:#e7ebeb;color:#162126;border:0}
+.booking .socials{border-color:#ffffff25}.booking-bottom p{color:#bbc4ca}
+footer{background:#05090e}
+.header nav .nav-book[aria-current="location"]{color:#101719}
+@media(min-width:1800px){.music{background-size:100% 1050px,100% 1050px,auto 1050px}.live-section{background-size:100% 900px,100% auto}}
+@media(max-width:1000px){.signal-sticky{min-height:620px}.sculpture{height:490px}.live-section .section-heading{min-height:280px}.live-section .section-note{max-width:260px}.music-head{padding-bottom:45px}}
+@media(max-width:600px){
+ .music{background-size:100% 710px,100% 710px,auto 710px;background-position:top,top,60% top}
+ .music-head{padding-block:0 35px}.music-services{margin-top:30px}
+ .proof-strip>.metric-card{padding:22px 12px;background:#0b1116b3}
+ .proof-strip>.metric-card:nth-child(3n+2){border-inline:0}
+ .proof-strip>.metric-card:nth-child(odd){border-right:1px solid #ffffff16}
+ .proof-strip>.metric-card:nth-child(-n+4){border-bottom:1px solid #ffffff16}
+ .music-console{margin-top:40px}
+ .signal-sticky{min-height:0;padding-block:70px 60px}.sculpture{height:350px}
+ .live-section{padding-top:70px;background-size:100% 490px,auto 490px;background-position:top,55% top}
+ .live-section .section-heading{min-height:310px;margin-bottom:28px}.live-section .section-note{margin-top:25px;max-width:270px}
+ .video-grid{gap:24px}.coord{margin-top:42px}
+ .about,.gallery-section,.press{padding-block:76px}.artist h3{font-size:38px}
+ .gallery{gap:10px}.press .downloads a{padding:20px 16px}
+ .community{padding-block:70px}.community-grid{gap:15px}
+ .booking{padding-block:85px 95px;min-height:700px;background-position:58% center}
+ .booking-bottom{margin-top:55px}.booking h2{font-size:clamp(46px,11vw,64px)}
+}
+@media(prefers-reduced-motion:reduce){.press .downloads a:hover{transform:none}}
