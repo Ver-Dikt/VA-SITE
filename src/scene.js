@@ -20,6 +20,10 @@ glyph([[255,835],[331,606],[452,231],[640,231],[408,835]]);
 glyph([[420,835],[657,231],[737,419],[596,835]]);
 glyph([[657,231],[818,231],[1061,835],[879,835],[737,419]]);
 glyph([[671,606],[804,606],[844,737],[630,737]]);
+// Detached ice prisms share the sculpture's actual depth, lighting and scroll rotation.
+prism([[-2.1,.7],[-1.95,1.35],[-1.66,1.12],[-1.75,.53]],.3);
+prism([[1.72,-.77],[1.87,-.28],[2.08,-.5],[1.99,-1.14]],.27);
+prism([[1.4,1.02],[1.51,1.37],[1.73,1.2],[1.65,.88]],.16);
 function attribute(name,data){const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(data),gl.STATIC_DRAW);const a=gl.getAttribLocation(program,name);gl.enableVertexAttribArray(a);gl.vertexAttribPointer(a,3,gl.FLOAT,false,0,0)}attribute('aPosition',points);attribute('aNormal',normals);
 const yaw=gl.getUniformLocation(program,'uYaw'),pitch=gl.getUniformLocation(program,'uPitch'),aspect=gl.getUniformLocation(program,'uAspect');gl.enable(gl.DEPTH_TEST);gl.clearColor(0,0,0,0);canvas.parentElement.classList.add('webgl-ready');
 let visible=false,paused=false,frame=0,pointer=0,now=0;const media=matchMedia('(prefers-reduced-motion: reduce)');

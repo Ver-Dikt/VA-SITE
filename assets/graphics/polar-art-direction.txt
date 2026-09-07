@@ -1,0 +1,4 @@
+Generated with built-in image_gen, one asset, 2026-09-07.
+Prompt: cinematic photorealistic northern Kola-like snowy rounded fells at navy polar twilight, clear blue ice slabs foreground, subtle distant turquoise aurora, spacious dark sky for white website text, realistic frost textures, no lettering, logos, people or buildings.
+Original artwork: illustrative landscape, not a photograph of a documented real location.
+Output used: assets/images/polar-landscape.webp.
