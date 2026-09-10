@@ -1,7 +1,7 @@
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const assert=require('node:assert/strict');
 (async()=>{
- const browser=await chromium.launch({headless:true});
+ const browser=await chromium.launch({headless:true,...(process.env.BROWSER_CHANNEL?{channel:process.env.BROWSER_CHANNEL}:{})});
  const page=await browser.newPage();
  const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto(process.env.SITE_URL||'http://127.0.0.1:5177/',{waitUntil:'domcontentloaded'});
@@ -21,7 +21,7 @@ const assert=require('node:assert/strict');
  assert.equal(await page.locator('.ice-shard').count(),0);
  assert.equal(await page.locator('.proof-strip>a').count(),0);
  assert.equal(await page.locator('.metric-card').first().locator('a').count(),2);
- assert.equal(await page.locator('.platform-pair').count(),6);
+ assert.equal(await page.locator('.platform-pair').count(),4);
  await page.locator('.service-player summary').click();
  await page.locator('.service-choices button').last().click();
  assert.match(await page.locator('.service-slot iframe').getAttribute('src'),/^https:\/\/embed.music.apple.com\//);

@@ -19,13 +19,13 @@ function renderTracks(focusNew=false){
 function state(){
   const running=!audio.paused;
   document.body.classList.toggle('is-playing',running);
-  play.textContent=running?'Ⅱ':'▶';
+  play.innerHTML=VA_ICON(running?'pause':'play');
   play.setAttribute('aria-label',running?'Пауза':'Воспроизвести превью');
   trackList.querySelectorAll('[data-track]').forEach(button=>{
     const active=Number(button.dataset.track)===current;
     button.classList.toggle('active',active);
     button.setAttribute('aria-pressed',String(active&&running));
-    button.lastElementChild.textContent=active&&running?'Ⅱ':'▶';
+    button.lastElementChild.innerHTML=VA_ICON(active&&running?'pause':'play');
   });
 }
 function select(index){
@@ -58,7 +58,7 @@ trackList.addEventListener('click',event=>{
 play.addEventListener('click',()=>{if(audio.paused)start();else{request++;audio.pause();status.textContent=''}});
 $('[data-prev]').addEventListener('click',()=>select(current-1));
 $('[data-next]').addEventListener('click',()=>select(current+1));
-$('[data-mute]').addEventListener('click',()=>{audio.muted=!audio.muted;$('[data-mute]').textContent=audio.muted?'Звук выкл.':'Звук вкл.';$('[data-mute]').setAttribute('aria-pressed',String(audio.muted))});
+$('[data-mute]').addEventListener('click',()=>{audio.muted=!audio.muted;$('[data-mute]').innerHTML=VA_ICON(audio.muted?'mute':'volume',audio.muted?'Звук выкл.':'Звук вкл.');$('[data-mute]').setAttribute('aria-pressed',String(audio.muted))});
 audio.addEventListener('play',state); audio.addEventListener('pause',state);
 audio.addEventListener('ended',()=>{status.textContent='Превью завершено. Полная версия — в Apple Music.';state()});
 audio.addEventListener('error',()=>{if(audio.getAttribute('src'))status.textContent='Превью недоступно. Откройте полную версию в Apple Music.';state()});
@@ -68,6 +68,6 @@ progress.addEventListener('input',()=>{if(Number.isFinite(audio.duration))audio.
 trackSearch.addEventListener('input',()=>{trackLimit=8;renderTracks()});
 $('[data-more-tracks]').addEventListener('click',()=>{trackLimit+=10;renderTracks(true)});
 art.addEventListener('error',()=>{art.removeAttribute('src');art.alt='Обложка временно недоступна'});
-renderTracks(); select(0);
+$('[data-prev]').innerHTML=VA_ICON('previous');$('[data-next]').innerHTML=VA_ICON('next');$('[data-mute]').innerHTML=VA_ICON('volume','Звук вкл.');renderTracks(); select(0);
 window.addEventListener('pagehide',()=>{request++;audio.pause()});
 })();

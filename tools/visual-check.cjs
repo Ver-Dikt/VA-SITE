@@ -1,0 +1,2 @@
+const {chromium}=require(process.env.PLAYWRIGHT_MODULE);
+(async()=>{const b=await chromium.launch();const p=await b.newPage({viewport:{width:1440,height:1000}});await p.goto('http://127.0.0.1:5178/');for(const id of ['music','live','press']){await p.locator('#'+id).evaluate(e=>window.scrollTo({top:e.offsetTop-75,behavior:'instant'}));await p.waitForTimeout(200);await p.screenshot({path:'tmp/review-'+id+'.png'});}console.log(await p.locator('.brand-icon').evaluateAll(a=>a.filter(i=>!i.complete||!i.naturalWidth).map(i=>i.src)));await b.close()})();

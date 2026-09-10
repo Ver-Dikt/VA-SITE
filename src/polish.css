@@ -1,0 +1,35 @@
+/* Local brand artwork and a consistent control vocabulary. */
+.ui-icon{display:inline-block;width:18px;height:18px;flex:0 0 18px;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.ui-icon .fill{fill:currentColor;stroke:none}
+.brand-icon{display:inline-block;width:22px;height:22px;object-fit:contain;flex:0 0 22px;vertical-align:middle}
+.brand-icon[src$=".svg"]{filter:brightness(0) invert(1);opacity:.92}
+.platform-pair h3,.metric-links a,.store-links a,.text-links a,.socials a,.video>a,.booking-bottom>a{display:flex;align-items:center;gap:10px}
+.menu-toggle{align-items:center;gap:10px}
+.platform-pair h3{font-size:15px;margin-bottom:18px}.platform-pair h3 .brand-icon{width:26px;height:26px;flex-basis:26px}
+.platform-pair>div{display:flex;flex-wrap:wrap;gap:10px 18px}.platform-pair a{display:inline-flex;align-items:center;gap:7px;min-height:34px}
+.platform-pair a .ui-icon,.metric-links .ui-icon{width:13px;height:13px;flex-basis:13px;opacity:.55}
+.proof-strip .metric-card>.brand-icon{display:block;margin-bottom:20px;width:26px;height:26px}
+.metric-links{gap:12px}.metric-links a{min-height:32px;flex-wrap:nowrap}
+.round{display:inline-flex;align-items:center;justify-content:center}.round.play .ui-icon{width:23px;height:23px}
+.mute{display:inline-flex;align-items:center;gap:8px;font-size:11px}.track .ui-icon{width:15px;height:15px}
+.button .ui-icon{margin-left:8px}.booking-email .ui-icon,.secondary-email .ui-icon{margin-inline:6px}
+.community-grid>a>.brand-icon{width:32px;height:32px;margin-bottom:22px}.community-grid h3 .ui-icon{margin-left:10px}
+.coord h3>.ui-icon,.booking h2>.ui-icon{display:none}.dialog-close{display:grid;place-items:center}
+.text-links a,.socials a,.store-links a{padding:10px 0;min-height:44px}.store-links{gap:18px;flex-wrap:wrap}
+.video>a{padding:10px 8px}.video>a .brand-icon{width:17px;height:17px;flex-basis:17px}
+.music-services{grid-template-columns:repeat(2,minmax(0,1fr))}
+/* Full-bleed scenes dissolve into their chapter, with no image-box edges. */
+.music::before{right:0;width:80%;height:min(1100px,100%);opacity:.85;background-position:65% 40%;mask-image:linear-gradient(90deg,transparent,#000 45%),linear-gradient(180deg,transparent,#000 12%,#000 65%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 45%),linear-gradient(180deg,transparent,#000 12%,#000 65%,transparent)}
+.music::after{background:linear-gradient(90deg,#0a0f14 0,#0a0f14ad 28%,transparent 72%)}
+.live-section::before{height:950px;opacity:.92;background-position:center 35%;mask-image:linear-gradient(180deg,transparent,#000 15%,#000 52%,transparent);-webkit-mask-image:linear-gradient(180deg,transparent,#000 15%,#000 52%,transparent)}
+.live-section::after{background:linear-gradient(90deg,#0b1014b0,transparent 55%)}
+.section+.section{border-top:0}.about{background:linear-gradient(180deg,#0d1215,#151a1e 30%,#090b0d)}
+.about::before{opacity:.075;width:65%;mask-image:linear-gradient(180deg,transparent,#000 30%,transparent);-webkit-mask-image:linear-gradient(180deg,transparent,#000 30%,transparent)}
+.gallery-section{background:radial-gradient(ellipse at 85% 50%,#26333b70,transparent 65%),linear-gradient(#090b0d,#10171c)}
+.press{background:linear-gradient(180deg,#10171c,#111b22 55%,#0b1116)}
+.press::before{opacity:.2;width:70%;background-position:75% center;mask-image:linear-gradient(90deg,transparent,#000),linear-gradient(180deg,transparent,#000 45%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000),linear-gradient(180deg,transparent,#000 45%,transparent);mask-composite:intersect;-webkit-mask-composite:source-in}
+.community{background:linear-gradient(#0b1116,#11191f 65%,#090f15)}
+.booking{background-image:linear-gradient(180deg,#090f15 0,#090f1540 25%,#05090e30 60%,#05090e 100%),url('../assets/images/polar-horizon.webp')}
+.video,.platform-pair{border-radius:12px}.video{box-shadow:0 18px 50px #0003}.video-image{border-radius:7px;overflow:hidden}
+a:focus-visible,button:focus-visible{outline:2px solid #dce9ed;outline-offset:5px}
+@media(max-width:600px){.music::before{width:100%;right:0;height:780px;opacity:.55}.music::after{background:linear-gradient(180deg,#0a0f1499,transparent 35%,#0a0f14)}.music-head{min-height:0;padding-bottom:90px}.live-section::before{height:680px;background-position:58% center}.platform-pair h3{font-size:13px;gap:8px}.platform-pair{padding:15px}.platform-pair a{font-size:11px}.metric-links{flex-wrap:wrap}.store-links a{font-size:11px}.booking-email,.secondary-email{overflow-wrap:anywhere}.booking-email .ui-icon,.secondary-email .ui-icon{width:14px;height:14px}.proof-strip .metric-card>.brand-icon{margin-bottom:14px}.community-grid>a>.brand-icon{margin-bottom:12px}}
