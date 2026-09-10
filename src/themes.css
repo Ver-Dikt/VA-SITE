@@ -17,3 +17,16 @@ html[data-north-theme=night] .music::before{filter:brightness(.85) sepia(.3) sat
 html[data-north-theme=night] .live-section>.theme-atmosphere{background:radial-gradient(ellipse at 70% 12%,#398e9865,transparent 45%),radial-gradient(ellipse at 25% 5%,#7855ab55,transparent 55%)}
 html[data-north-theme=sunset] .live-section>.theme-atmosphere{background:linear-gradient(180deg,#80547c2e,transparent 75%),radial-gradient(ellipse at 80% 35%,#efa96960,transparent 60%)}
 @media(max-width:600px){.theme-picker{right:14px;bottom:14px}.theme-options{max-height:calc(100svh - 130px);overflow:auto}}
+/* Each theme has separate landscape and material photography. */
+html[data-north-theme=glacier]{--theme-detail:url('../assets/images/themes/glacier-detail.webp');--theme-landscape:url('../assets/images/themes/glacier-landscape.webp')}
+html[data-north-theme=sunset]{--theme-detail:url('../assets/images/themes/sunset-detail.webp');--theme-landscape:url('../assets/images/themes/sunset-landscape.webp')}
+html[data-north-theme=night]{--theme-detail:url('../assets/images/themes/night-detail.webp');--theme-landscape:url('../assets/images/themes/night-landscape.webp')}
+html[data-north-theme]:not([data-north-theme=original]) .music::before{background-image:var(--theme-detail);background-position:center;filter:none;opacity:.85}
+html[data-north-theme]:not([data-north-theme=original]) .live-section::before{background-image:linear-gradient(180deg,#07101545,transparent 35%,#11171b 96%),var(--theme-landscape);background-position:center;filter:none}
+html[data-north-theme]:not([data-north-theme=original]) .press::before{background-image:var(--theme-detail);background-position:25% 70%;background-size:auto 140%;opacity:.23}
+html[data-north-theme]:not([data-north-theme=original]) .booking{background-image:linear-gradient(180deg,#090f15 0,#090f1538 28%,#05090e80 65%,#05090e 100%),var(--theme-landscape);background-position:center,65% 65%}
+html[data-north-theme]:not([data-north-theme=original]) .about::before{background-image:var(--theme-detail);background-size:cover;opacity:.12}
+.swatch-glacier{background:url("../assets/images/themes/glacier-landscape.webp") center/cover}
+.swatch-sunset{background:url("../assets/images/themes/sunset-landscape.webp") center/cover}
+.swatch-night{background:url("../assets/images/themes/night-landscape.webp") center/cover}
+
