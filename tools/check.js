@@ -2,7 +2,7 @@ const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('ass
 const root=path.resolve(__dirname,'..'),html=fs.readFileSync(path.join(root,'index.html'),'utf8'),ctx={window:{}};
 for(const file of ['content.js','catalogue.js'])vm.runInNewContext(fs.readFileSync(path.join(root,'src',file),'utf8'),ctx);
 const c=ctx.window.VA_CONTENT,d=ctx.window.VA_CATALOGUE;
-const refs=[...html.matchAll(/(?:src|href)="([^"]+)"/g)].map(m=>m[1]);
+const refs=[...html.matchAll(/(?:src|href)="([^"]+)"/g)].map(m=>m[1].split('?')[0]);
 for(const cssFile of fs.readdirSync(path.join(root,'src')).filter(f=>f.endsWith('.css'))){
  const css=fs.readFileSync(path.join(root,'src',cssFile),'utf8');
  for(const match of css.matchAll(/url\(["']?([^"')]+)["']?\)/g)){
@@ -23,3 +23,4 @@ assert(!fs.readFileSync(path.join(root,'src/music.js'),'utf8').includes('assets/
 assert.equal(c.videos.length,5);assert(html.includes('data-track-art'));assert(html.includes('proof-strip'));
 const app=fs.readFileSync(path.join(root,'src/app.js'),'utf8');assert(app.includes('vkvideo.ru/video_ext.php'));assert(app.includes('allowfullscreen'));
 console.log(`PASS: ${refs.length} references; ${d.releases.length} Beatport records; ${d.tracks.length} remote previews; 5 embedded VK videos; release artwork; 7 downloads; JS syntax; no initial audio source or autoplay.`);
+
