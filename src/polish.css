@@ -1,4 +1,15 @@
 /* Local brand artwork and a consistent control vocabulary. */
+.music-console.compact-player{display:grid;grid-template-columns:100px minmax(0,1fr);grid-template-rows:auto;gap:20px;max-width:680px;padding:22px;margin:40px auto 0;align-items:center}
+.compact-player .now-art{grid-column:1;grid-row:1;padding:0;width:100px;aspect-ratio:1;align-self:start;background:none}
+.compact-player .now-art img{width:100px;height:100px;margin:0;object-fit:contain}
+.music-console.compact-player .player{grid-column:2;grid-row:1;padding:0;min-width:0;display:block}
+.compact-player .now-meta>p{display:none}.compact-player .now-meta h3{font-size:21px;line-height:1.2;letter-spacing:-.03em;margin:0 0 5px}.compact-player .now-meta>span{font-size:11px}
+.compact-player .player-top{flex-wrap:nowrap}.compact-player .mute{flex-basis:auto;min-width:28px;padding:4px}
+.music-console.compact-player .player-top{margin-top:12px;gap:8px}.compact-player .round.play{width:40px;height:40px}.compact-player .round{height:40px;width:32px}
+.compact-player input[type=range]{margin-top:6px;height:20px}.compact-player .player-caption{font-size:10px}.compact-player .status:empty{display:none}
+.compact-player .store-links{margin-top:6px;gap:16px}.compact-player .store-links a{font-size:10px;min-height:32px;padding:4px 0;gap:6px}.compact-player .store-links .brand-icon{width:16px;height:16px;flex-basis:16px}.compact-player .source-note{font-size:9px;margin-top:4px}
+.compact-player+.service-player{max-width:680px;margin-top:12px}.compact-player+.service-player>summary{font-size:12px;padding-block:14px}
+@media(max-width:600px){.music-console.compact-player{grid-template-columns:64px minmax(0,1fr);gap:12px;padding:16px}.compact-player .now-art,.compact-player .now-art img{width:64px;height:64px}.compact-player .now-meta h3{font-size:17px}.compact-player .mute span{display:none}.compact-player .store-links{gap:8px}.compact-player .store-links .ui-icon{display:none}}
 .ui-icon{display:inline-block;width:18px;height:18px;flex:0 0 18px;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .ui-icon .fill{fill:currentColor;stroke:none}
 .brand-icon{display:inline-block;width:22px;height:22px;object-fit:contain;flex:0 0 22px;vertical-align:middle}
