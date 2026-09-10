@@ -44,6 +44,21 @@ const assert=require('node:assert/strict');
  await page.screenshot({path:'tmp/polar-desktop.png'});
  await page.emulateMedia({reducedMotion:'reduce'});
  assert.equal(await page.locator('.header nav').evaluate(e=>getComputedStyle(e).animationName),'none');
+ await page.locator('.theme-picker summary').click();
+ for(const theme of ['glacier','sunset','night','original']){
+   await page.locator(`[data-theme="${theme}"]`).click();
+   assert.equal(await page.locator('html').getAttribute('data-north-theme'),theme);
+ }
+ await page.locator('[data-theme="sunset"]').click();
+ await page.reload({waitUntil:'domcontentloaded'});
+ assert.equal(await page.locator('html').getAttribute('data-north-theme'),'sunset');
+ await page.setViewportSize({width:360,height:800});
+ await page.locator('.theme-picker summary').click();
+ assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+ await page.screenshot({path:'tmp/theme-picker-mobile.png'});
+ await page.locator('[data-theme="original"]').click();
+ await page.keyboard.press('Escape');
+ assert.equal(await page.locator('.theme-picker').evaluate(e=>e.open),false);
  assert.deepEqual(errors,[]);
  console.log('PASS: six viewport widths; menu; artwork and track switching; no autoplay; compact player; removed gallery; reduced motion; no page errors.');
  await browser.close();
