@@ -21,7 +21,7 @@ const assert=require('node:assert/strict');
  assert.equal(await page.locator('.ice-shard').count(),0); assert.equal(await page.locator('#photos,[data-tracks],[data-track-search]').count(),0);
  assert.equal(await page.locator('.proof-strip>a').count(),0);
  assert.equal(await page.locator('.metric-card').first().locator('a').count(),2);
- assert.equal(await page.locator('.platform-pair').count(),4);
+ assert.equal(await page.locator('.platform-pair').count(),5);
  await page.locator('.service-player summary').click();
  await page.locator('.service-choices button').last().click();
  assert.match(await page.locator('.service-slot iframe').getAttribute('src'),/^https:\/\/embed.music.apple.com\//);

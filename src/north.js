@@ -22,18 +22,18 @@
     ['Beatport',window.VA_CONTENT.platforms.slice(8,10)],
     ['Звук',window.VA_CONTENT.platforms.slice(10,12)]
   ];
-  $('[data-platforms]').replaceChildren(...groups.filter(([name])=>!['Яндекс Музыка','Beatport'].includes(name)).map(([name,entries])=>{
+  $('[data-platforms]').replaceChildren(...groups.filter(([name])=>name!=='Яндекс Музыка').map(([name,entries])=>{
     const card=document.createElement('div');card.className='platform-pair';
-    const title=document.createElement('h3');title.innerHTML=VA_BRAND({'Spotify':'spotify','Apple Music':'applemusic','SoundCloud':'soundcloud','Звук':'zvuk'}[name],name);
+    const title=document.createElement('h3');title.innerHTML=VA_BRAND({'Spotify':'spotify','Apple Music':'applemusic','SoundCloud':'soundcloud','Звук':'zvuk','Beatport':'beatport'}[name],name);
     const links=document.createElement('div');
     entries.forEach(([label,url])=>links.append(link(label.split(' · ')[1]+' ↗',url)));
-    card.append(title,links);return card;
+    if(name==='Beatport'){card.classList.add('buy-music');title.innerHTML=VA_BRAND('beatport','Купить музыку на Beatport')}card.append(title,links);return card;
   }));
   const metricDestinations=[
     [['Ver-Dikt ↗',groups[0][1][0][1]],['Andy Dav ↗',groups[0][1][1][1]]],
     [['Ver-Dikt ↗','https://instagram.com/verdiktmusic/'],['Andy Dav ↗','https://instagram.com/andydavmusic/']],
     [['Канал дуэта ↗','https://t.me/verdiktandydav']],
-    [['Пять live-сетов ↓','#live']],
+    [['Канал дуэта ↗','https://vk.ru/verdiktandydav']],
     [['Ver-Dikt ↗',groups[4][1][0][1]],['Andy Dav ↗',groups[4][1][1][1]]],
     [['Выбрать трек ↓','#listen']]
   ];
@@ -47,7 +47,7 @@
   const note=document.createElement('details');note.className='stats-note';
   const summary=document.createElement('summary');summary.textContent='О показателях и источниках';
   const text=document.createElement('p');
-  text.textContent='Публичный срез: 7 сентября 2026. Instagram — сумма подписчиков двух профилей (1 137 + 2 330), аудитории могут пересекаться. VK — сумма округлённых просмотров пяти сетов. Яндекс 1M+ — данные артистов, период ещё не указан. Apple Music — число доступных здесь превью, а не прослушиваний. Цифры не обновляются автоматически.';
+  text.textContent='Instagram и Telegram — публичный срез на 7 сентября 2026. Instagram: сумма двух профилей (1 137 + 2 330), аудитории могут пересекаться. Яндекс Музыка: более 2 млн прослушиваний за год, по данным артистов от 11 сентября 2026. Цифры не обновляются автоматически.';
   note.append(summary,text);$('.proof-strip').after(note);
   const streaming=document.createElement('details');streaming.className='service-player';
   const heading=document.createElement('summary');heading.textContent='Официальные плееры · Spotify и Apple Music';

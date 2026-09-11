@@ -3,7 +3,6 @@
 const c=window.VA_CONTENT, $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
 const ext='target="_blank" rel="noopener noreferrer"';
 $('[data-platforms]').innerHTML=c.platforms.map(([name,href])=>`<a href="${href}" ${ext}>${name} ↗</a>`).join('');
-$('[data-socials]').innerHTML=c.social.map(([name,href])=>`<a href="${href}" ${ext}>${name} ↗</a>`).join('');
 $('[data-videos]').innerHTML=c.videos.map(([name,place,img,id])=>`<article class="video"><div class="video-image"><iframe src="https://vkvideo.ru/video_ext.php?oid=-213504350&id=${id}&hd=2" title="${name} — live-сет Ver-Dikt & Andy Dav" allow="autoplay; encrypted-media; fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div><h3>${name}</h3><p>${place}</p><a href="https://vkvideo.ru/video-213504350_${id}" ${ext}>Открыть в VK Видео ↗</a></article>`).join('');
 $('[data-bio]').textContent=c.bio;
 $('[data-year]').textContent=new Date().getFullYear();
