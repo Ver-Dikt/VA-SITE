@@ -1,5 +1,6 @@
 const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert');
 const root=path.resolve(__dirname,'..'),html=fs.readFileSync(path.join(root,'index.html'),'utf8'),ctx={window:{}};
+const photosHtml=fs.readFileSync(path.join(root,'photos.html'),'utf8');
 for(const file of ['content.js','catalogue.js'])vm.runInNewContext(fs.readFileSync(path.join(root,'src',file),'utf8'),ctx);
 const c=ctx.window.VA_CONTENT,d=ctx.window.VA_CATALOGUE;
 const refs=[...html.matchAll(/(?:src|href)="([^"]+)"/g)].map(m=>m[1].split('?')[0]);
@@ -25,5 +26,7 @@ const app=fs.readFileSync(path.join(root,'src/app.js'),'utf8');assert(app.includ
 for(const file of ['north-bg-desktop.mp4','north-bg-mobile.mp4','north-bg-poster.webp'])assert(fs.existsSync(path.join(root,'assets','video',file)),`Missing background video asset ${file}`);
 assert(html.includes('class="video-journey"'));assert(html.includes('muted loop playsinline preload="none"'));assert(!html.includes('<video class="journey-video" autoplay'));
 const videoBg=fs.readFileSync(path.join(root,'src','video-bg.js'),'utf8');assert(videoBg.includes('IntersectionObserver'));assert(videoBg.includes('video.play()'));
+assert(photosHtml.includes('data-photo-grid'));assert(c.downloads[0][2]==='photos.html');
+for(const dir of ['originals','thumbs'])assert.equal(fs.readdirSync(path.join(root,'assets','photos',dir)).length,24,`Expected 24 photo ${dir}`);
 console.log(`PASS: ${refs.length} references; ${d.releases.length} Beatport records; ${d.tracks.length} remote previews; 5 embedded VK videos; release artwork; 6 media downloads; JS syntax; no initial audio source or autoplay.`);
 
