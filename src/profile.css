@@ -28,3 +28,18 @@ footer{display:block}.footer-main{display:flex;justify-content:space-between;gap
 .instagram-mark sup{position:absolute;right:-7px;top:-7px;color:#fff;font-size:13px;font-weight:700;line-height:1;text-shadow:0 1px 5px #000}
 .proof-strip .metric-card>.instagram-mark{display:grid;width:26px;height:26px;margin-bottom:20px}
 @media(max-width:600px){.proof-strip .metric-card>.instagram-mark{margin-bottom:14px}}
+
+/* One continuous video atmosphere from Music through the 3D sound sculpture. */
+.video-journey{position:relative;isolation:isolate;background:#05090d}
+.journey-backdrop{position:sticky;top:0;height:100svh;margin-bottom:-100svh;z-index:0;overflow:hidden;background:#071018}
+.journey-video,.journey-overlay{position:absolute;inset:0;width:100%;height:100%}
+.journey-video{object-fit:cover;object-position:center;filter:saturate(.82) contrast(1.08) brightness(.72);opacity:0;transition:opacity .8s ease}
+.journey-video.is-ready{opacity:1}
+.journey-overlay{background:linear-gradient(180deg,#050a0e80 0,#071017b8 45%,#030609d9 100%),linear-gradient(90deg,#03070cb8 0,transparent 55%,#02060a7d 100%)}
+.video-journey>.music,.video-journey>.signal{position:relative;z-index:1;background-color:transparent!important;background-image:none!important}
+.video-journey>.music::before,.video-journey>.music::after,.video-journey>.signal::before,.video-journey>.signal::after{display:none!important}
+.video-journey .theme-atmosphere{background:radial-gradient(ellipse at 85% 15%,var(--polar-glow,transparent),transparent 58%)!important}
+html[data-north-theme=glacier] .journey-video{filter:saturate(.88) contrast(1.1) brightness(.72) hue-rotate(4deg)}
+html[data-north-theme=sunset] .journey-video{filter:saturate(.92) contrast(1.06) brightness(.7) sepia(.1) hue-rotate(330deg)}
+html[data-north-theme=night] .journey-video{filter:saturate(1.05) contrast(1.12) brightness(.64) hue-rotate(18deg)}
+@media(max-width:700px){.journey-video{object-position:center center}.journey-overlay{background:linear-gradient(180deg,#050a0e70,#071017b5 48%,#030609e0)}}

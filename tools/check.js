@@ -22,5 +22,8 @@ for(const file of fs.readdirSync(path.join(root,'src')).filter(f=>f.endsWith('.j
 assert(!fs.readFileSync(path.join(root,'src/music.js'),'utf8').includes('assets/audio/'));assert.equal(c.downloads.length,7);
 assert.equal(c.videos.length,5);assert(html.includes('data-track-art'));assert(html.includes('proof-strip'));
 const app=fs.readFileSync(path.join(root,'src/app.js'),'utf8');assert(app.includes('vkvideo.ru/video_ext.php'));assert(app.includes('allowfullscreen'));
+for(const file of ['north-bg-desktop.mp4','north-bg-mobile.mp4','north-bg-poster.webp'])assert(fs.existsSync(path.join(root,'assets','video',file)),`Missing background video asset ${file}`);
+assert(html.includes('class="video-journey"'));assert(html.includes('muted loop playsinline preload="none"'));assert(!html.includes('<video class="journey-video" autoplay'));
+const videoBg=fs.readFileSync(path.join(root,'src','video-bg.js'),'utf8');assert(videoBg.includes('IntersectionObserver'));assert(videoBg.includes('video.play()'));
 console.log(`PASS: ${refs.length} references; ${d.releases.length} Beatport records; ${d.tracks.length} remote previews; 5 embedded VK videos; release artwork; 7 downloads; JS syntax; no initial audio source or autoplay.`);
 
