@@ -7,3 +7,15 @@
 @media(min-width:761px) and (prefers-reduced-motion:no-preference){.signal{height:190svh;overflow:visible}.signal-sticky{position:sticky;top:0;height:100svh;min-height:600px;overflow:hidden;grid-template-columns:.7fr 1.3fr}.sculpture{height:min(70svh,660px)}}
 @media(max-width:760px){.proof-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.proof-strip>.metric-card{padding:24px 16px;border-bottom:1px solid #ffffff16!important}.proof-strip>.metric-card:nth-child(even){border-right:0!important}.proof-strip>.metric-card:nth-last-child(-n+2){border-bottom:0!important}.coord{grid-template-columns:1fr;gap:28px}.coord-logo{max-width:350px}.artists{gap:50px}.artist .portrait{max-width:350px}.community-grid{gap:14px}.community-grid a{width:72px;height:72px;min-height:72px;border-radius:18px}.community-grid a>.brand-icon{width:30px;height:30px}}
 @media(prefers-reduced-motion:reduce){.community-grid a:hover>.brand-icon{transform:none}}
+
+/* Final media pass: official brand colors and clear destination controls. */
+.brand-icon[src$=".svg"]{filter:none!important;opacity:1!important}
+.music-services .platform-pair a{padding:9px 13px!important;border:1px solid #ffffff24!important;border-radius:8px!important;background:#ffffff08!important;color:#eef4f6!important;text-decoration:none!important;font-size:12px!important}
+.music-services .platform-pair a:hover{background:#ffffff15!important;border-color:#ffffff55!important;transform:translateY(-1px)}
+.platform-pair>div{gap:10px!important}
+.compact-player .store-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px!important;margin-top:12px}
+.compact-player .store-links a{padding:8px 10px!important;border:1px solid #ffffff20;border-radius:7px;background:#ffffff07;font-size:10px!important}
+.compact-player .store-links a:first-child{grid-column:1/-1}
+.coord{align-items:start}.coord-logo{margin-top:4px}.coord>div:nth-child(2){padding-top:34px}
+footer{display:block}.footer-main{display:flex;justify-content:space-between;gap:20px}.legal-note{max-width:1050px;margin-top:22px;padding-top:18px;border-top:1px solid #ffffff18;line-height:1.55;color:#77838b;letter-spacing:0}
+@media(max-width:600px){.compact-player .store-links{grid-template-columns:1fr}.compact-player .store-links a:first-child{grid-column:auto}.coord>div:nth-child(2){padding-top:8px}.footer-main{flex-wrap:wrap}.footer-main>a:first-child{flex-basis:100%}.legal-note{font-size:9px}}

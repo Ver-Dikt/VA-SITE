@@ -44,45 +44,6 @@
     metricDestinations[index].forEach(([label,url])=>links.append(link(label,url)));
     card.append(links);original.replaceWith(card);
   });
-  const note=document.createElement('details');note.className='stats-note';
-  const summary=document.createElement('summary');summary.textContent='О показателях и источниках';
-  const text=document.createElement('p');
-  text.textContent='Instagram и Telegram — публичный срез на 7 сентября 2026. Instagram: сумма двух профилей (1 137 + 2 330), аудитории могут пересекаться. Яндекс Музыка: более 2 млн прослушиваний за год, по данным артистов от 11 сентября 2026. Цифры не обновляются автоматически.';
-  note.append(summary,text);$('.proof-strip').after(note);
-  const streaming=document.createElement('details');streaming.className='service-player';
-  const heading=document.createElement('summary');heading.textContent='Официальные плееры · Spotify и Apple Music';
-  const choices=document.createElement('div');choices.className='service-choices';
-  const slot=document.createElement('div');slot.className='service-slot';
-  const artists=[['Ver-Dikt','5xu7pge6IjHBZN0bfjsbnj'],['Andy Dav','4jc91GzW3bSdGd4lucJHbH']];
-  artists.forEach(([name,id])=>{
-    const button=document.createElement('button');button.type='button';button.textContent=name;button.className='button';button.setAttribute('aria-pressed','false');
-    button.addEventListener('click',()=>{
-      $('audio').pause();
-      choices.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
-      const frame=document.createElement('iframe');frame.title='Spotify — '+name;
-      frame.src='https://open.spotify.com/embed/artist/'+id+'?theme=0';
-      frame.allow='encrypted-media; fullscreen; picture-in-picture';frame.referrerPolicy='strict-origin-when-cross-origin';
-      slot.replaceChildren(frame);
-    });choices.append(button);
-  });
-  const apple=document.createElement('button');apple.type='button';apple.className='button';apple.textContent='Apple Music · выбранный трек';apple.setAttribute('aria-pressed','false');
-  apple.addEventListener('click',()=>{
-    $('audio').pause();
-    choices.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===apple)));
-    const url=new URL($('[data-apple-link]').href);
-    if(url.hostname!=='music.apple.com')return;
-    url.hostname='embed.music.apple.com';
-    const frame=document.createElement('iframe');frame.title='Apple Music — '+$('[data-now]').textContent;
-    frame.src=url.href;frame.allow='autoplay; encrypted-media; fullscreen';frame.referrerPolicy='strict-origin-when-cross-origin';
-    slot.replaceChildren(frame);
-  });choices.append(apple);
-  const help=document.createElement('p');help.className='stream-help';help.textContent='Полное воспроизведение зависит от аккаунта, подписки и доступности сервиса. Прослушивание учитывается выбранной платформой по её правилам. Превью выше — для знакомства с треком.';
-  streaming.append(heading,help,choices,slot);$('.music-console').after(streaming);
-  const stopStreaming=()=>{slot.replaceChildren();choices.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed','false'))};
-  streaming.addEventListener('toggle',()=>{if(!streaming.open)stopStreaming()});
-  $('audio').addEventListener('play',stopStreaming);
-  document.addEventListener('va:trackchange',stopStreaming);
-  window.addEventListener('pagehide',stopStreaming);
   // Decorate static and generated links with the same accessible local icon set.
   const brands=[[/yandex\.ru|music\.yandex/,'yandexmusic'],[/spotify/,'spotify'],[/apple\.com/,'applemusic'],[/soundcloud/,'soundcloud'],[/beatport/,'beatport'],[/zvuk/,'zvuk'],[/t\.me/,'telegram'],[/instagram/,'instagram'],[/youtube/,'youtube'],[/vk\.|vkvideo/,'vk']];
   document.querySelectorAll('a,button,.coord h3,.booking h2>span').forEach(el=>{
