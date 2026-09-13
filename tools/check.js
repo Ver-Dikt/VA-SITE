@@ -21,7 +21,7 @@ assert(!/TODO|требует уточнения|должно быть|Email по
 const audio=html.match(/<audio\b[^>]*>/)[0];assert(audio.includes('preload="none"'));assert(!/\b(?:autoplay|src)=/.test(audio));
 for(const file of fs.readdirSync(path.join(root,'src')).filter(f=>f.endsWith('.js')))new vm.Script(fs.readFileSync(path.join(root,'src',file),'utf8'),{filename:file});
 assert(!fs.readFileSync(path.join(root,'src/music.js'),'utf8').includes('assets/audio/'));assert.equal(c.downloads.length,5);
-assert.equal(c.videos.length,5);assert(html.includes('data-track-art'));assert(html.includes('proof-strip'));
+assert.equal(c.videos.length,5);assert(html.includes('data-videos-outside')&&html.includes('data-videos-club'));assert(html.includes('data-track-art'));assert(html.includes('proof-strip'));
 const app=fs.readFileSync(path.join(root,'src/app.js'),'utf8');assert(app.includes('vkvideo.ru/video_ext.php'));assert(app.includes('allowfullscreen'));
 for(const file of ['north-bg-desktop.mp4','north-bg-mobile.mp4','north-bg-poster.webp'])assert(fs.existsSync(path.join(root,'assets','video',file)),`Missing background video asset ${file}`);
 assert(html.includes('class="video-journey"'));assert(html.includes('muted loop playsinline preload="none"'));assert(!html.includes('<video class="journey-video" autoplay'));
