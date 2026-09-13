@@ -26,7 +26,7 @@ html[data-north-theme]:not([data-north-theme=original]) .live-section::before{ba
 html[data-north-theme]:not([data-north-theme=original]) .press::before{background-image:var(--theme-detail);background-position:25% 70%;background-size:auto 140%;opacity:.23}
 html[data-north-theme]:not([data-north-theme=original]) .booking{background-image:linear-gradient(180deg,#090f15 0,#090f1538 28%,#05090e80 65%,#05090e 100%),var(--theme-landscape);background-position:center,65% 65%}
 html[data-north-theme]:not([data-north-theme=original]) .about::before{background-image:var(--theme-detail);background-size:cover;opacity:.12}
-.swatch-glacier{background:url("../assets/images/themes/glacier-landscape.webp") center/cover}
-.swatch-sunset{background:url("../assets/images/themes/sunset-landscape.webp") center/cover}
-.swatch-night{background:url("../assets/images/themes/night-landscape.webp") center/cover}
+.swatch-glacier{background:url("../assets/images/themes/thumb-glacier.webp") center/cover}
+.swatch-sunset{background:url("../assets/images/themes/thumb-sunset.webp") center/cover}
+.swatch-night{background:url("../assets/images/themes/thumb-night.webp") center/cover}
 
