@@ -1,6 +1,6 @@
 const fs=require('fs'),path=require('path'),vm=require('vm'),assert=require('assert');
 const root=path.resolve(__dirname,'..'),html=fs.readFileSync(path.join(root,'index.html'),'utf8'),ctx={window:{}};
-const photosHtml=fs.readFileSync(path.join(root,'photos.html'),'utf8');
+const photosHtml=fs.readFileSync(path.join(root,'photos.html'),'utf8'),logosHtml=fs.readFileSync(path.join(root,'logos.html'),'utf8'),riderHtml=fs.readFileSync(path.join(root,'rider.html'),'utf8');
 for(const file of ['content.js','catalogue.js'])vm.runInNewContext(fs.readFileSync(path.join(root,'src',file),'utf8'),ctx);
 const c=ctx.window.VA_CONTENT,d=ctx.window.VA_CATALOGUE;
 const refs=[...html.matchAll(/(?:src|href)="([^"]+)"/g)].map(m=>m[1].split('?')[0]);
@@ -11,7 +11,7 @@ for(const cssFile of fs.readdirSync(path.join(root,'src')).filter(f=>f.endsWith(
  }
 }
 refs.push(...c.downloads.map(x=>x[2]),...c.videos.map(x=>`assets/images/${x[2]}.webp`),...c.photos.map(x=>`assets/images/${x[0]}.webp`));
-for(const ref of refs){if(ref.startsWith('#'))assert(html.includes(`id="${ref.slice(1)}"`),`Missing section ${ref}`);else if(!/^(https?:|mailto:)/.test(ref))assert(fs.existsSync(path.join(root,ref)),`Missing asset ${ref}`)}
+for(const ref of refs){if(ref.startsWith('#'))assert(html.includes(`id="${ref.slice(1)}"`),`Missing section ${ref}`);else if(!/^(https?:|mailto:)/.test(ref))assert(fs.existsSync(path.join(root,ref.split('?')[0])),`Missing asset ${ref}`)}
 for(const [name,href] of [...c.platforms,...c.social]){assert(name&&href);assert.equal(new URL(href).protocol,'https:')}
 assert(d.releases.length>=140);assert.equal(new Set(d.releases.map(r=>r.url)).size,d.releases.length);
 for(const r of d.releases){assert(r.title&&r.label&&/^\d{4}-\d{2}-\d{2}$/.test(r.date));assert.equal(new URL(r.url).hostname,'www.beatport.com')}
@@ -20,13 +20,15 @@ for(const t of d.tracks){assert(t.title&&t.artist);assert.equal(new URL(t.previe
 assert(!/TODO|требует уточнения|должно быть|Email пока|Пять треков/.test(html+JSON.stringify(c)),'Unfinished visitor copy');
 const audio=html.match(/<audio\b[^>]*>/)[0];assert(audio.includes('preload="none"'));assert(!/\b(?:autoplay|src)=/.test(audio));
 for(const file of fs.readdirSync(path.join(root,'src')).filter(f=>f.endsWith('.js')))new vm.Script(fs.readFileSync(path.join(root,'src',file),'utf8'),{filename:file});
-assert(!fs.readFileSync(path.join(root,'src/music.js'),'utf8').includes('assets/audio/'));assert.equal(c.downloads.length,6);
+assert(!fs.readFileSync(path.join(root,'src/music.js'),'utf8').includes('assets/audio/'));assert.equal(c.downloads.length,5);
 assert.equal(c.videos.length,5);assert(html.includes('data-track-art'));assert(html.includes('proof-strip'));
 const app=fs.readFileSync(path.join(root,'src/app.js'),'utf8');assert(app.includes('vkvideo.ru/video_ext.php'));assert(app.includes('allowfullscreen'));
 for(const file of ['north-bg-desktop.mp4','north-bg-mobile.mp4','north-bg-poster.webp'])assert(fs.existsSync(path.join(root,'assets','video',file)),`Missing background video asset ${file}`);
 assert(html.includes('class="video-journey"'));assert(html.includes('muted loop playsinline preload="none"'));assert(!html.includes('<video class="journey-video" autoplay'));
 const videoBg=fs.readFileSync(path.join(root,'src','video-bg.js'),'utf8');assert(videoBg.includes('IntersectionObserver'));assert(videoBg.includes('video.play()'));
 assert(photosHtml.includes('data-photo-grid'));assert(c.downloads[0][2]==='photos.html');
+assert(logosHtml.includes('va-logo-white.png')&&logosHtml.includes('va-logo-black.png')&&logosHtml.match(/download/g).length>=2);
+assert(riderHtml.includes('data-download')&&riderHtml.includes('data-pdf'));assert(c.downloads.slice(2).every(x=>x[2].startsWith('rider.html?document=')));
 for(const dir of ['originals','thumbs'])assert.equal(fs.readdirSync(path.join(root,'assets','photos',dir)).length,24,`Expected 24 photo ${dir}`);
-console.log(`PASS: ${refs.length} references; ${d.releases.length} Beatport records; ${d.tracks.length} remote previews; 5 embedded VK videos; release artwork; 6 media downloads; JS syntax; no initial audio source or autoplay.`);
+console.log(`PASS: ${refs.length} references; ${d.releases.length} Beatport records; ${d.tracks.length} remote previews; 5 embedded VK videos; release artwork; media viewers; JS syntax; no initial audio source or autoplay.`);
 
