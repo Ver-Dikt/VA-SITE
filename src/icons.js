@@ -17,5 +17,9 @@
     mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>'
   };
   window.VA_ICON=(name,label='')=>`<svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">${paths[name]||paths.external}</svg>${label?`<span>${label}</span>`:''}`;
-  window.VA_BRAND=(name,label='')=>`<img class="brand-icon" src="assets/icons/brands/${name}.${name==='yandexmusic'||name==='zvuk'?'ico':'svg'}" alt="" aria-hidden="true">${label?`<span>${label}</span>`:''}`;
+  window.VA_BRAND=(name,label='')=>{
+    const image=`<img class="brand-icon" src="assets/icons/brands/${name}.${name==='yandexmusic'||name==='zvuk'?'ico':'svg'}" alt="" aria-hidden="true">`;
+    const icon=name==='instagram'?`<span class="instagram-mark" aria-hidden="true">${image}<sup>*</sup></span>`:image;
+    return `${icon}${label?`<span>${label}</span>`:''}`;
+  };
 })();
