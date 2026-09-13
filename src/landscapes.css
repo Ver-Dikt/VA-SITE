@@ -63,7 +63,7 @@
 }
 .booking h2{max-width:1150px;font-size:clamp(58px,8.5vw,128px)}
 .booking h2 em{color:#a0abb4}.booking h2>span{display:none}
-.booking-bottom{margin-top:90px}.booking-bottom .button{background:#e7ebeb;color:#162126;border:0}
+.booking-bottom{margin-top:90px}.booking-bottom .button{background:#ffffff06;color:#f0f2ef;border:1px solid #ffffff30}.booking-bottom .button:hover{background:#e5e8e5;color:#0a1117}
 .booking .socials{border-color:#ffffff25}.booking-bottom p{color:#bbc4ca}
 footer{background:#05090e}
 .header nav .nav-book[aria-current="location"]{color:#101719}
