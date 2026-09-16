@@ -12,7 +12,7 @@ npm run build
 python -m http.server 5177
 ```
 
-The deployable output is `dist`. Local source audio is intentionally excluded from the build and Git. The site does not preload audio, resume playback, or advance automatically. Only explicit play actions start a streamed preview. Spotify loads only on request and is removed when its panel closes or a preview starts.
+The deployable output is `dist`. The supplied `Sunrise (Original Mix)` MP3 is bundled as the looping site soundtrack. The browser is asked to start it on page load; when autoplay is blocked, the floating player presents an explicit start action. Starting a catalogue preview pauses the soundtrack so two sources never play together.
 
 ## Catalogue maintenance
 

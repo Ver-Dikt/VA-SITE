@@ -18,9 +18,10 @@ for(const r of d.releases){assert(r.title&&r.label&&/^\d{4}-\d{2}-\d{2}$/.test(r
 assert(d.tracks.length>50);assert.equal(new Set(d.tracks.map(t=>t.id)).size,d.tracks.length);
 for(const t of d.tracks){assert(t.title&&t.artist);assert.equal(new URL(t.preview).hostname,'audio-ssl.itunes.apple.com');assert.equal(new URL(t.url).hostname,'music.apple.com')}
 assert(!/TODO|требует уточнения|должно быть|Email пока|Пять треков/.test(html+JSON.stringify(c)),'Unfinished visitor copy');
-const audio=html.match(/<audio\b[^>]*>/)[0];assert(audio.includes('preload="none"'));assert(!/\b(?:autoplay|src)=/.test(audio));
+const catalogueAudio=html.match(/<audio\b[^>]*data-audio\b[^>]*>/)[0];assert(catalogueAudio.includes('preload="none"'));assert(!/\b(?:autoplay|src)=/.test(catalogueAudio));
+assert(html.includes('data-site-audio-track')&&html.includes('assets/audio/sunrise-original-mix.mp3'));assert(html.includes('https://t.me/coordmusic'));
 for(const file of fs.readdirSync(path.join(root,'src')).filter(f=>f.endsWith('.js')))new vm.Script(fs.readFileSync(path.join(root,'src',file),'utf8'),{filename:file});
-assert(!fs.readFileSync(path.join(root,'src/music.js'),'utf8').includes('assets/audio/'));assert.equal(c.downloads.length,5);
+assert(fs.existsSync(path.join(root,'assets/audio/sunrise-original-mix.mp3')));assert.equal(c.downloads.length,5);
 assert.equal(c.videos.length,5);assert(html.includes('data-videos-outside')&&html.includes('data-videos-club'));assert(html.includes('data-track-art'));assert(html.includes('proof-strip'));
 const app=fs.readFileSync(path.join(root,'src/app.js'),'utf8');assert(app.includes('vkvideo.ru/video_ext.php'));assert(app.includes('allowfullscreen'));
 for(const file of ['north-bg-desktop.mp4','north-bg-mobile.mp4','north-bg-poster.webp'])assert(fs.existsSync(path.join(root,'assets','video',file)),`Missing background video asset ${file}`);
@@ -30,5 +31,5 @@ assert(photosHtml.includes('data-photo-grid'));assert(c.downloads[0][2]==='photo
 assert(logosHtml.includes('va-logo-white.png')&&logosHtml.includes('va-logo-black.png')&&logosHtml.match(/download/g).length>=2);
 assert(riderHtml.includes('data-download')&&riderHtml.includes('data-pdf'));assert(c.downloads.slice(2).every(x=>x[2].startsWith('rider.html?document=')));
 for(const dir of ['originals','thumbs'])assert.equal(fs.readdirSync(path.join(root,'assets','photos',dir)).length,24,`Expected 24 photo ${dir}`);
-console.log(`PASS: ${refs.length} references; ${d.releases.length} Beatport records; ${d.tracks.length} remote previews; 5 embedded VK videos; release artwork; media viewers; JS syntax; no initial audio source or autoplay.`);
+console.log(`PASS: ${refs.length} references; ${d.releases.length} Beatport records; ${d.tracks.length} remote previews; background track and controls; Coord Telegram; 5 embedded VK videos; release artwork; media viewers; JS syntax.`);
 
